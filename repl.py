@@ -1,4 +1,3 @@
-import sys
 from cmd import Cmd
 
 from boto3 import client
