@@ -6,11 +6,10 @@ from boto3 import client
 
 class S3Shell(Cmd):
 
-    def __init__(self, bucket):
+    def __init__(self):
         super().__init__()
-        self.bucket = bucket
         self.conn = client('s3')
-        self.wd = ''
+        self._wd = ''
         self.prompt = '> '
 
     @property
@@ -19,7 +18,7 @@ class S3Shell(Cmd):
 
     @wd.setter
     def wd(self, d):
-        self.prompt = str(d) + '> '
+        self.prompt = d + '> '
         self._wd = d
 
     def do_ls(self, args):
@@ -44,6 +43,5 @@ class S3Shell(Cmd):
 
 
 if __name__ == '__main__':
-    b = sys.argv[1]
-    prompt = S3Shell(b)
+    prompt = S3Shell()
     prompt.cmdloop('Starting prompt...')
