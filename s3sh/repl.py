@@ -40,7 +40,3 @@ class S3Shell(Cmd):
         else:
             self.wd += args + '/'
 
-
-if __name__ == '__main__':
-    prompt = S3Shell()
-    prompt.cmdloop('Starting prompt...')
